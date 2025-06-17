@@ -1,0 +1,38 @@
+// Step 1: Create student array
+let students = [
+  { name: "Shifa", roll: 101, marks: 88 },
+  { name: "Aneequa", roll: 102, marks: 65 },
+  { name: "shagupta", roll: 103, marks: 72 }
+];
+
+// Step 2: Display students
+function displayStudents(data) {
+  const list = document.getElementById("studentList");
+  list.innerHTML = ""; // Clear previous content
+  data.forEach(student => {
+    list.innerHTML += `<p>Name: ${student.name} | Roll: ${student.roll} | Marks: ${student.marks}</p>`;
+  });
+}
+
+// Display on page load
+displayStudents(students);
+
+// Step 3: Filter top scorers
+function showTopScorers() {
+  const topScorers = students.filter(student => student.marks > 70);
+  displayStudents(topScorers);
+}
+
+// Step 4: Add new student
+function addStudent() {
+  const name = document.getElementById("name").value;
+  const roll = parseInt(document.getElementById("roll").value);
+  const marks = parseInt(document.getElementById("marks").value);
+
+  if (name && !isNaN(roll) && !isNaN(marks)) {
+    students.push({ name, roll, marks });
+    displayStudents(students);
+  } else {
+    alert("Please fill all fields correctly.");
+  }
+}
